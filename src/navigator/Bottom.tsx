@@ -1,6 +1,7 @@
-import { bottomTabHome, bottomTabOrder, bottomTabProfile, bottomTabScan } from "../../assets";
+import { bottomTabBag, bottomTabHome, bottomTabOrder, bottomTabProfile, bottomTabScan, HeaderIcon } from "../../assets";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigatorRoutes } from "../components/enum";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import ProfileScreen from "../screen/Profile";
 import OrderScreen from "../screen/Order";
 import { SvgXml } from "react-native-svg";
@@ -14,53 +15,75 @@ const inActive = "#838383";
 
 export const MyTabs = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen
-        name={NavigatorRoutes.Home}
-        component={HomeScreen}
-        options={{
-          title: NavigatorRoutes.Home,
-          tabBarActiveTintColor: active,
-          tabBarInactiveTintColor: inActive,
-          tabBarIcon: ({ size, focused }) => {
-            return <SvgXml xml={bottomTabHome(focused ? active : inActive)} width={size} height={size} />;
-          },
-        }}
-      />
-      <Tab.Screen
-        name={NavigatorRoutes.Scan}
-        component={ScanScreen}
-        options={{
-          title: NavigatorRoutes.Scan,
-          tabBarActiveTintColor: active,
-          tabBarInactiveTintColor: inActive,
-          tabBarIcon: ({ size, focused }) => {
-            return <SvgXml xml={bottomTabScan(focused ? active : inActive)} width={size} height={size} />;
-          },
-        }}
-      />
-      <Tab.Screen
-        name={NavigatorRoutes.Order}
-        component={OrderScreen}
-        options={{
-          title: NavigatorRoutes.Order,
-          tabBarActiveTintColor: active,
-          tabBarInactiveTintColor: inActive,
-          tabBarIcon: ({ size, focused }) => {
-            return <SvgXml xml={bottomTabOrder(focused ? active : inActive)} width={size} height={size} />;
-          },
-        }}
-      />
-      <Tab.Screen
-        name={NavigatorRoutes.Profile}
-        component={ProfileScreen}
-        options={{
-          title: NavigatorRoutes.Profile,
-          tabBarActiveTintColor: active,
-          tabBarInactiveTintColor: inActive,
-          tabBarIcon: ({ size, focused }) => <SvgXml xml={bottomTabProfile(focused ? active : inActive)} width={size} height={size} />,
-        }}
-      />
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: active,
+        tabBarInactiveTintColor: inActive,
+        headerShown: true,
+        tabBarStyle: styles.bottomTabShadow,
+        header: () => {
+          return (
+            <View className="h-[110] flex items-center justify-center bg-[#fff] pt-[48] shadow relative">
+              <SvgXml xml={HeaderIcon} width={170} height={25} />
+              <TouchableOpacity
+                className="absolute right-[16] bottom-[16]"
+                onPress={() => {
+                  console.log("props");
+                }}
+              >
+                <SvgXml xml={bottomTabBag} width={20} height={20} />
+              </TouchableOpacity>
+            </View>
+          );
+        },
+      }}
+    >
+      {Screens.map((it, i) => (
+        <Tab.Screen
+          key={i}
+          name={it.name}
+          component={it.component}
+          options={{
+            title: it.name,
+            tabBarIcon: ({ size, focused }) => {
+              return <SvgXml xml={it.xml(focused ? active : inActive)} width={size} height={size} />;
+            },
+          }}
+        />
+      ))}
     </Tab.Navigator>
   );
 };
+
+const Screens = [
+  {
+    name: NavigatorRoutes.Home,
+    component: HomeScreen,
+    xml: bottomTabHome,
+  },
+  {
+    name: NavigatorRoutes.Scan,
+    component: ScanScreen,
+    xml: bottomTabScan,
+  },
+  {
+    name: NavigatorRoutes.Order,
+    component: OrderScreen,
+    xml: bottomTabOrder,
+  },
+  {
+    name: NavigatorRoutes.Profile,
+    component: ProfileScreen,
+    xml: bottomTabProfile,
+  },
+];
+
+const styles = StyleSheet.create({
+  bottomTabShadow: {
+    shadowOffset: { width: -1, height: -3 },
+    shadowColor: "#000",
+    shadowOpacity: 0.07,
+    shadowRadius: 3,
+    borderTopWidth: 0,
+  },
+});
