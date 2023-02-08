@@ -112,14 +112,6 @@ PODS:
     - FirebaseAnalytics (~> 10.4.0)
   - Firebase/CoreOnly (10.4.0):
     - FirebaseCore (= 10.4.0)
-  - Firebase/Crashlytics (10.4.0):
-    - Firebase/CoreOnly
-    - FirebaseCrashlytics (~> 10.4.0)
-  - Firebase/Performance (10.4.0):
-    - Firebase/CoreOnly
-    - FirebasePerformance (~> 10.4.0)
-  - FirebaseABTesting (10.4.0):
-    - FirebaseCore (~> 10.0)
   - FirebaseAnalytics (10.4.0):
     - FirebaseAnalytics/AdIdSupport (= 10.4.0)
     - FirebaseCore (~> 10.0)
@@ -142,37 +134,13 @@ PODS:
     - FirebaseCoreInternal (~> 10.0)
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/Logger (~> 7.8)
-  - FirebaseCoreExtension (10.4.0):
-    - FirebaseCore (~> 10.0)
-  - FirebaseCoreInternal (10.4.0):
+  - FirebaseCoreInternal (10.5.0):
     - "GoogleUtilities/NSData+zlib (~> 7.8)"
-  - FirebaseCrashlytics (10.4.0):
-    - FirebaseCore (~> 10.0)
-    - FirebaseInstallations (~> 10.0)
-    - GoogleDataTransport (~> 9.2)
-    - GoogleUtilities/Environment (~> 7.8)
-    - nanopb (< 2.30910.0, >= 2.30908.0)
-    - PromisesObjC (~> 2.1)
-  - FirebaseInstallations (10.4.0):
+  - FirebaseInstallations (10.5.0):
     - FirebaseCore (~> 10.0)
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
-  - FirebasePerformance (10.4.0):
-    - FirebaseCore (~> 10.0)
-    - FirebaseInstallations (~> 10.0)
-    - FirebaseRemoteConfig (~> 10.0)
-    - GoogleDataTransport (~> 9.2)
-    - GoogleUtilities/Environment (~> 7.8)
-    - GoogleUtilities/ISASwizzler (~> 7.8)
-    - GoogleUtilities/MethodSwizzler (~> 7.8)
-    - nanopb (< 2.30910.0, >= 2.30908.0)
-  - FirebaseRemoteConfig (10.4.0):
-    - FirebaseABTesting (~> 10.0)
-    - FirebaseCore (~> 10.0)
-    - FirebaseInstallations (~> 10.0)
-    - GoogleUtilities/Environment (~> 7.8)
-    - "GoogleUtilities/NSData+zlib (~> 7.8)"
   - fmt (6.2.1)
   - glog (0.3.5)
   - GoogleAppMeasurement (10.4.0):
@@ -195,10 +163,6 @@ PODS:
     - GoogleUtilities/Network (~> 7.8)
     - "GoogleUtilities/NSData+zlib (~> 7.8)"
     - nanopb (< 2.30910.0, >= 2.30908.0)
-  - GoogleDataTransport (9.2.1):
-    - GoogleUtilities/Environment (~> 7.7)
-    - nanopb (< 2.30910.0, >= 2.30908.0)
-    - PromisesObjC (< 3.0, >= 1.2)
   - GoogleUtilities (7.11.0):
     - GoogleUtilities/AppDelegateSwizzler (= 7.11.0)
     - GoogleUtilities/Environment (= 7.11.0)
@@ -522,15 +486,6 @@ PODS:
   - RNFBApp (17.0.0):
     - Firebase/CoreOnly (= 10.4.0)
     - React-Core
-  - RNFBCrashlytics (17.0.0):
-    - Firebase/Crashlytics (= 10.4.0)
-    - FirebaseCoreExtension (= 10.4.0)
-    - React-Core
-    - RNFBApp
-  - RNFBPerf (17.0.0):
-    - Firebase/Performance (= 10.4.0)
-    - React-Core
-    - RNFBApp
   - RNScreens (3.18.2):
     - React-Core
     - React-RCTImage
@@ -593,8 +548,6 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
-  - "RNFBCrashlytics (from `../node_modules/@react-native-firebase/crashlytics`)"
-  - "RNFBPerf (from `../node_modules/@react-native-firebase/perf`)"
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -602,18 +555,12 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Firebase
-    - FirebaseABTesting
     - FirebaseAnalytics
     - FirebaseCore
-    - FirebaseCoreExtension
     - FirebaseCoreInternal
-    - FirebaseCrashlytics
     - FirebaseInstallations
-    - FirebasePerformance
-    - FirebaseRemoteConfig
     - fmt
     - GoogleAppMeasurement
-    - GoogleDataTransport
     - GoogleUtilities
     - nanopb
     - PromisesObjC
@@ -717,10 +664,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
-  RNFBCrashlytics:
-    :path: "../node_modules/@react-native-firebase/crashlytics"
-  RNFBPerf:
-    :path: "../node_modules/@react-native-firebase/perf"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   RNSVG:
@@ -750,19 +693,13 @@ SPEC CHECKSUMS:
   FBLazyVector: affa4ba1bfdaac110a789192f4d452b053a86624
   FBReactNativeSpec: fe8b5f1429cfe83a8d72dc8ed61dc7704cac8745
   Firebase: ba3501b5142a57747eac74d27c96d2b313bdec90
-  FirebaseABTesting: ae3b32fe26e761fd54c68e37a632a0097b599c87
   FirebaseAnalytics: 0be84b933ca3222bca03e8cccf020ad9b1c3c6ff
   FirebaseCore: b8697a177690b69b0dbce9d612b69b893be70469
-  FirebaseCoreExtension: d209ada6f48bac53d149e996cf1b2dafa632a615
-  FirebaseCoreInternal: e301297f4c15a17489e48ed722d733b1578e0c02
-  FirebaseCrashlytics: 52e821fd4d36eba20a251a53549c2778b455f360
-  FirebaseInstallations: 36b38c733fd37e50857e5e8d74138648f466f18c
-  FirebasePerformance: b157e90b0fb79c3eb64de3934cfc040d587c95ee
-  FirebaseRemoteConfig: bf23f54161ebad4fb4acb1ac44ad7783a784f3ab
+  FirebaseCoreInternal: e463f41bb935cd049505bf7e9a5bdd7dcea90df6
+  FirebaseInstallations: 935bc4abb6f7a035cab7a0c31cb777b2be3dd254
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   GoogleAppMeasurement: 173fa22ce7d62c29332568e853b39b2525a0e584
-  GoogleDataTransport: ea169759df570f4e37bdee1623ec32a7e64e67c4
   GoogleUtilities: c2bdc4cf2ce786c4d2e6b3bcfd599a25ca78f06f
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
@@ -794,8 +731,6 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 7401c4a40f8728fd89df4a56104541b760876117
   ReactCommon: c9246996e73bf75a2c6c3ff15f1e16707cdc2da9
   RNFBApp: 339ca238581a4c97d391fa077902e0e0117dddda
-  RNFBCrashlytics: 64bbcc2758bfd351c9ec3e28893e1a4bbd8aa362
-  RNFBPerf: dd0d812fd37ae2d27fa2a728fb89247d0b68acbc
   RNScreens: 34cc502acf1b916c582c60003dc3089fa01dc66d
   RNSVG: 07dbd870b0dcdecc99b3a202fa37c8ca163caec2
   Yoga: eca980a5771bf114c41a754098cd85e6e0d90ed7

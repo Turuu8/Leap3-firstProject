@@ -1,4 +1,4 @@
-package com.anonymous.firstProject;
+package com.firstproject;
 
 import android.os.Build;
 import android.os.Bundle;

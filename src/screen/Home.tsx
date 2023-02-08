@@ -20,8 +20,9 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
         <View className="p-[15]">
-          <View className="bg-[#1E3932] from-[#1E3932] h-[205] rounded">
-            <SvgXml xml={SpecialImage} />
+          <View className="bg-[#1E3932] from-[#1E3932] h-[205] rounded relative flex items-center flex-row">
+            <SvgXml className="absolute right-[30] bottom-[20]" xml={SpecialImage} />
+            <Text className="text-[#fff] text-[20px] w-[172px] leading-[32px] font-[700] ml-[23px]">HERE’S TO MORE SUNNY DAYS AHEAD!</Text>
           </View>
         </View>
         <Text className="h-[100vh]">HomeScreen</Text>
