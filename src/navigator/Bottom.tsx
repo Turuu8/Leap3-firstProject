@@ -1,6 +1,6 @@
 import { bottomTabBag, bottomTabHome, bottomTabOrder, bottomTabProfile, bottomTabScan, HeaderIcon } from "../../assets";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigatorRoutes } from "../components/enum";
+import { NavigatorRoutes } from "../enum";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import ProfileScreen from "../screen/Profile";
 import OrderScreen from "../screen/Order";
@@ -28,7 +28,7 @@ export const MyTabs = () => {
               <TouchableOpacity
                 className="absolute right-[16] bottom-[16]"
                 onPress={() => {
-                  console.log("props");
+                  console.log("bag");
                 }}
               >
                 <SvgXml xml={bottomTabBag} width={20} height={20} />
