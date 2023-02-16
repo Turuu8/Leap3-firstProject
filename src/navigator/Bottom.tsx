@@ -1,14 +1,15 @@
 import { bottomTabBag, bottomTabHome, bottomTabOrder, bottomTabProfile, bottomTabScan, HeaderIcon } from "../../assets";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigatorRoutes } from "../enum";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { useNumber } from "../context/BagProducts";
 import ProfileScreen from "../screen/Profile";
 import OrderScreen from "../screen/Order";
+import { NavigatorRoutes } from "../enum";
 import { SvgXml } from "react-native-svg";
 import HomeScreen from "../screen/Home";
 import ScanScreen from "../screen/Scan";
-import { useNavigation } from "@react-navigation/native";
-import { useNumber } from "../context/BagProducts";
+import { Dispatch, SetStateAction } from "react";
 
 const Tab = createBottomTabNavigator();
 
@@ -16,7 +17,7 @@ const active = "#D3A762";
 const inActive = "#838383";
 
 export const MyTabs = () => {
-  const { bagNumber, setBagNumber } = useNumber();
+  const { bagNumber, setBagNumber } = useNumber() as { bagNumber: number; setBagNumber: Dispatch<SetStateAction<number>> };
   const navigation = useNavigation();
   return (
     <Tab.Navigator
@@ -32,7 +33,7 @@ export const MyTabs = () => {
               <TouchableOpacity
                 className="absolute right-[16] bottom-[16]"
                 onPress={() => {
-                  navigation.navigate("Bag");
+                  navigation.navigate(NavigatorRoutes.Bag as never);
                 }}
               >
                 <SvgXml xml={bottomTabBag} width={20} height={20} />

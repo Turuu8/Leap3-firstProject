@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 export default function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Bottom" component={MyTabs} options={{ headerShown: false }} />
+      <Stack.Screen name={NavigatorRoutes.Bottom} component={MyTabs} options={{ headerShown: false }} />
       <Stack.Screen
         name={NavigatorRoutes.Bag}
         component={Bag}
@@ -17,7 +17,7 @@ export default function MyStack() {
           title: "My Bag",
         }}
       />
-      <Stack.Screen name="Detail" component={Details} />
+      <Stack.Screen name={NavigatorRoutes.Detail} component={Details} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }

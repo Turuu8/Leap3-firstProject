@@ -1,9 +1,9 @@
-
-
 export enum NavigatorRoutes {
-    Home = "Home",
-    Scan = "Scan",
-    Order = "Order",
-    Profile = "Profile",
-    Bag ="Bag"
+  Bag = "Bag",
+  Home = "Home",
+  Scan = "Scan",
+  Order = "Order",
+  Profile = "Profile",
+  Detail = "Detail",
+  Bottom = "Bottom",
 }
