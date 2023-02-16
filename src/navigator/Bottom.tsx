@@ -1,12 +1,14 @@
 import { bottomTabBag, bottomTabHome, bottomTabOrder, bottomTabProfile, bottomTabScan, HeaderIcon } from "../../assets";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigatorRoutes } from "../enum";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import ProfileScreen from "../screen/Profile";
 import OrderScreen from "../screen/Order";
 import { SvgXml } from "react-native-svg";
 import HomeScreen from "../screen/Home";
 import ScanScreen from "../screen/Scan";
+import { useNavigation } from "@react-navigation/native";
+import { useNumber } from "../context/BagProducts";
 
 const Tab = createBottomTabNavigator();
 
@@ -14,6 +16,8 @@ const active = "#D3A762";
 const inActive = "#838383";
 
 export const MyTabs = () => {
+  const { bagNumber, setBagNumber } = useNumber();
+  const navigation = useNavigation();
   return (
     <Tab.Navigator
       screenOptions={{
@@ -28,10 +32,15 @@ export const MyTabs = () => {
               <TouchableOpacity
                 className="absolute right-[16] bottom-[16]"
                 onPress={() => {
-                  console.log("bag");
+                  navigation.navigate("Bag");
                 }}
               >
                 <SvgXml xml={bottomTabBag} width={20} height={20} />
+                {bagNumber === 0 ? null : (
+                  <View className="absolute w-[16] h-[16] bg-[#D3A762] rounded-full flex items-center justify-center left-[-5] top-[-5]">
+                    <Text className="text-[#fff] text-[10px]">{bagNumber}</Text>
+                  </View>
+                )}
               </TouchableOpacity>
             </View>
           );
