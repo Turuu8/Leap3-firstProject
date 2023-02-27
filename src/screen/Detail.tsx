@@ -1,12 +1,12 @@
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { FlatList } from "react-native-gesture-handler";
 import { BackIcon, DetailBagIcon } from "../../assets";
 import { ListsType } from "../components/ProductsCard";
 import { useNumber } from "../context/BagProducts";
 import { Dispatch, SetStateAction } from "react";
 import { SvgXml } from "react-native-svg";
 import { NavigatorRoutes } from "../enum";
-import { FlatList } from "react-native-gesture-handler";
 import { cupSize } from "../utils";
 
 export const Details = () => {
@@ -26,7 +26,7 @@ export const Details = () => {
         <View className="flex flex-row justify-between">
           <FlatList
             data={cupSize}
-            keyExtractor={(item) => item.xml}
+            keyExtractor={(item, index) => index.toString()}
             scrollEnabled={false}
             horizontal
             renderItem={({ item }) => (
