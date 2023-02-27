@@ -14,7 +14,6 @@ export const NumberBag = ({ children }: { children?: ReactNode }) => {
   const [bagNumber, setBagNumber] = useState(0);
   const [detail, setDetail] = useState<ListsType[] | never[]>([]);
   const [bag, setBag] = useState<ListsType[] | never[]>([]);
-  console.log(bag[0].name);
 
   return <BagNumber.Provider value={{ bagNumber, setBagNumber, detail, setDetail, bag, setBag }}>{children}</BagNumber.Provider>;
 };
