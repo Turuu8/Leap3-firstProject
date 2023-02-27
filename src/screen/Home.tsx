@@ -45,7 +45,7 @@ const HomeScreen = () => {
                 <ProductsCard lists={item} />
               </View>
             )}
-            keyExtractor={(item) => item.xml}
+            keyExtractor={(item, index) => index.toString()}
             horizontal
           />
         </View>
@@ -60,7 +60,7 @@ const HomeScreen = () => {
                 <ProductsCard lists={item} />
               </View>
             )}
-            keyExtractor={(item) => item.xml}
+            keyExtractor={(item, index) => index.toString()}
             horizontal
           />
         </View>
