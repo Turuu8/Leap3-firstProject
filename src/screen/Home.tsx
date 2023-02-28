@@ -5,8 +5,11 @@ import { ArrowRight, SpecialImage } from "../../assets";
 import { LinearGradient } from "expo-linear-gradient";
 import { FlatGrid } from "react-native-super-grid";
 import { SvgXml } from "react-native-svg";
+import { useNumber } from "../context/BagProducts";
+import { Dispatch, SetStateAction } from "react";
 
 const HomeScreen = () => {
+  const { buttomTab, setButtomTab } = useNumber() as { buttomTab: number; setButtomTab: Dispatch<SetStateAction<number>> };
   return (
     <View className="h-[100%] bg-white">
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -28,9 +31,7 @@ const HomeScreen = () => {
           <View className="relative">
             <LinearGradient colors={["#1f3932", "#12221e"]} className="w-full h-[205] flex items-center flex-row rounded">
               <SvgXml className="absolute right-[30] bottom-[20]" xml={SpecialImage} />
-              <Text className="text-[#fff] text-[20px] w-[172px] leading-[32px] font-[700] ml-[23px]">
-                HERE’S TO MORE SUNNY DAYS AHEAD!
-              </Text>
+              <Text className="text-[#fff] text-[20px] w-[172px] leading-[32px] font-[700] ml-[23px]">HERE’S TO MORE SUNNY DAYS AHEAD!</Text>
             </LinearGradient>
           </View>
         </View>
@@ -67,8 +68,21 @@ const HomeScreen = () => {
         {/* -------------  Type choose bottoms ------------ */}
         <View className="pt-[20] pl-[15] pr-[15] flex flex-row justify-between">
           {productsType.map((el, i) => (
-            <Pressable key={i} onPress={() => console.log("hello")}>
-              <Text className="text-[16px] font-normal leading-[19]">{el}</Text>
+            <Pressable
+              key={i}
+              onPress={() => {
+                setButtomTab((p) => (p = i));
+                console.log("hello");
+              }}
+            >
+              <Text
+                className={`text-[16px] font-normal leading-[19] duration-[1] ${
+                  i === buttomTab ? "text-[#D3A762] text-[18px] leading-[22px] font-bold mt-[-5]" : ""
+                }`}
+              >
+                {el}
+              </Text>
+              {i === buttomTab && <View className="h-[2] w-full bg-[#D3A762] mt-[14]" />}
             </Pressable>
           ))}
         </View>
