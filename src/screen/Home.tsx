@@ -1,12 +1,12 @@
 import { FlatList, Pressable, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { favouriteList, productsType, SeasonalDrinks } from "../utils";
+import { favouriteList, productsDrinks, productsType, SeasonalDrinks } from "../utils";
 import { ProductsCard } from "../components/ProductsCard";
 import { ArrowRight, SpecialImage } from "../../assets";
 import { LinearGradient } from "expo-linear-gradient";
 import { FlatGrid } from "react-native-super-grid";
-import { SvgXml } from "react-native-svg";
 import { useNumber } from "../context/BagProducts";
 import { Dispatch, SetStateAction } from "react";
+import { SvgXml } from "react-native-svg";
 
 const HomeScreen = () => {
   const { buttomTab, setButtomTab } = useNumber() as { buttomTab: number; setButtomTab: Dispatch<SetStateAction<number>> };
@@ -31,7 +31,9 @@ const HomeScreen = () => {
           <View className="relative">
             <LinearGradient colors={["#1f3932", "#12221e"]} className="w-full h-[205] flex items-center flex-row rounded">
               <SvgXml className="absolute right-[30] bottom-[20]" xml={SpecialImage} />
-              <Text className="text-[#fff] text-[20px] w-[172px] leading-[32px] font-[700] ml-[23px]">HERE’S TO MORE SUNNY DAYS AHEAD!</Text>
+              <Text className="text-[#fff] text-[20px] w-[172px] leading-[32px] font-[700] ml-[23px]">
+                HERE’S TO MORE SUNNY DAYS AHEAD!
+              </Text>
             </LinearGradient>
           </View>
         </View>
@@ -92,7 +94,7 @@ const HomeScreen = () => {
               <ProductsCard lists={el} />
             </View>
           ))} */}
-          {/* <FlatGrid
+          <FlatGrid
             scrollEnabled={false}
             data={productsDrinks}
             renderItem={({ item }) => (
@@ -100,7 +102,7 @@ const HomeScreen = () => {
                 <ProductsCard lists={item} />
               </View>
             )}
-          /> */}
+          />
         </View>
       </ScrollView>
     </View>
