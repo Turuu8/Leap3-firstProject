@@ -8,14 +8,19 @@ export const BagNumber = createContext<{
   setDetail: Dispatch<SetStateAction<ListsType[] | never[]>>;
   bag: ListsType[] | never[];
   setBag: Dispatch<SetStateAction<ListsType[] | never[]>>;
+  buttomTab: number;
+  setButtomTab: Dispatch<SetStateAction<number>>;
 } | null>(null);
 
 export const NumberBag = ({ children }: { children?: ReactNode }) => {
   const [bagNumber, setBagNumber] = useState(0);
   const [detail, setDetail] = useState<ListsType[] | never[]>([]);
   const [bag, setBag] = useState<ListsType[] | never[]>([]);
+  const [buttomTab, setButtomTab] = useState(2);
 
-  return <BagNumber.Provider value={{ bagNumber, setBagNumber, detail, setDetail, bag, setBag }}>{children}</BagNumber.Provider>;
+  return (
+    <BagNumber.Provider value={{ bagNumber, setBagNumber, detail, setDetail, bag, setBag, buttomTab, setButtomTab }}>{children}</BagNumber.Provider>
+  );
 };
 
 export const useNumber = () => useContext(BagNumber);
