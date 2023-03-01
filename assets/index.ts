@@ -8,3 +8,4 @@ export * from "./images/arrow-right";
 export * from "./images/special-image";
 export * from "./images/bac-icon";
 export * from "./images/detail-bag-icon";
+export * from "./images/close-icon";

@@ -5,23 +5,29 @@ import { SvgXml } from "react-native-svg";
 import { NavigatorRoutes } from "../enum";
 import { Bag } from "../screen/Bag";
 import { MyTabs } from "./Bottom";
+import { SplashScreen } from "../components/SplashScreen";
 
 const Stack = createStackNavigator();
 
 export default function MyStack() {
   return (
     <Stack.Navigator>
+      <Stack.Screen name={"login"} component={SplashScreen} options={{ headerShown: false }} />
       <Stack.Screen name={NavigatorRoutes.Bottom} component={MyTabs} options={{ headerShown: false }} />
       <Stack.Screen
         name={NavigatorRoutes.Bag}
         component={Bag}
         options={{
-          // headerShown: false,
           header: ({ navigation }) => (
             <View className="flex flex-row relative h-[110px] items-end border-b-2 border-b-[#EAEAEA]">
-              <TouchableOpacity className="p-[15] w-[24] h-[24] bg-black" onPress={() => navigation.navigate(NavigatorRoutes.Home)}>
-                <SvgXml xml={backIcon} width={24} height={24} />
-              </TouchableOpacity>
+              <View className="">
+                <TouchableOpacity
+                  className="w-[24] top-[0] h-[24] flex items-center justify-center absolute"
+                  onPress={() => navigation.navigate(NavigatorRoutes.Home)}
+                >
+                  <SvgXml xml={backIcon} width={24} height={24} />
+                </TouchableOpacity>
+              </View>
               <Text className="w-full text-center text-[18px] font-medium leading-[20px] py-[18] ">My Bag</Text>
             </View>
           ),
