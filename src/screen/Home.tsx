@@ -1,5 +1,13 @@
 import { FlatList, Image, Pressable, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { favouriteList, productsColdDrinks, productsDrinks, productsFoodDrinks, productsHotDrinks, productsType, SeasonalDrinks } from "../utils";
+import {
+  favouriteList,
+  productsColdDrinks,
+  productsDrinks,
+  productsFoodDrinks,
+  productsHotDrinks,
+  productsType,
+  SeasonalDrinks,
+} from "../utils";
 import { ListsType, ProductsCard } from "../components/ProductsCard";
 import { ArrowRight, SpecialImage } from "../../assets";
 import { LinearGradient } from "expo-linear-gradient";
@@ -35,7 +43,9 @@ const HomeScreen = () => {
           <View className="relative">
             <LinearGradient colors={["#1f3932", "#12221e"]} className="w-full h-[205] flex items-center flex-row rounded">
               <SvgXml className="absolute right-[30] bottom-[20]" xml={SpecialImage} />
-              <Text className="text-[#fff] text-[20px] w-[172px] leading-[32px] font-[700] ml-[23px]">HERE’S TO MORE SUNNY DAYS AHEAD!</Text>
+              <Text className="text-[#fff] text-[20px] w-[172px] leading-[32px] font-[700] ml-[23px]">
+                HERE’S TO MORE SUNNY DAYS AHEAD!
+              </Text>
             </LinearGradient>
           </View>
         </View>
@@ -82,7 +92,7 @@ const HomeScreen = () => {
               }}
             >
               <Text
-                className={`text-[16px] font-normal leading-[19] duration-[1] ${
+                className={`text-[16px] font-normal leading-[19] ${
                   i === buttomTab ? "text-[#D3A762] text-[18px] leading-[22px] font-bold mt-[-5]" : ""
                 }`}
               >
@@ -99,7 +109,6 @@ const HomeScreen = () => {
             </View>
           ))} */}
           <FlatGrid
-            // scrollEnabled={false}
             data={
               buttomTab === 0
                 ? productsDrinks
@@ -116,6 +125,7 @@ const HomeScreen = () => {
                 <ProductsCard lists={item} />
               </View>
             )}
+            scrollEnabled={false}
             // horizontal={true}
           />
         </View>

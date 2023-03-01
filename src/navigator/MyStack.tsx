@@ -1,11 +1,11 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { Text, TouchableOpacity, View } from "react-native";
+import { SplashScreen } from "../components/SplashScreen";
 import { Details } from "../screen/Detail";
 import { SvgXml } from "react-native-svg";
 import { NavigatorRoutes } from "../enum";
 import { Bag } from "../screen/Bag";
 import { MyTabs } from "./Bottom";
-import { SplashScreen } from "../components/SplashScreen";
 
 const Stack = createStackNavigator();
 
@@ -20,14 +20,12 @@ export default function MyStack() {
         options={{
           header: ({ navigation }) => (
             <View className="flex flex-row relative h-[110px] items-end border-b-2 border-b-[#EAEAEA]">
-              <View className="">
-                <TouchableOpacity
-                  className="w-[24] top-[0] h-[24] flex items-center justify-center absolute"
-                  onPress={() => navigation.navigate(NavigatorRoutes.Home)}
-                >
-                  <SvgXml xml={backIcon} width={24} height={24} />
-                </TouchableOpacity>
-              </View>
+              <TouchableOpacity
+                className="w-[24] h-[24] flex items-center justify-center"
+                onPress={() => navigation.navigate(NavigatorRoutes.Home)}
+              >
+                <SvgXml xml={backIcon} width={24} height={24} />
+              </TouchableOpacity>
               <Text className="w-full text-center text-[18px] font-medium leading-[20px] py-[18] ">My Bag</Text>
             </View>
           ),
