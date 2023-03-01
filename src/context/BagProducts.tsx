@@ -6,6 +6,8 @@ export const BagNumber = createContext<{
   setBagNumber: Dispatch<SetStateAction<number>>;
   detail: ListsType[] | never[];
   setDetail: Dispatch<SetStateAction<ListsType[] | never[]>>;
+  favourite: ListsType[] | never[];
+  setFavourite: Dispatch<SetStateAction<ListsType[] | never[]>>;
   bag: ListsType[] | never[];
   setBag: Dispatch<SetStateAction<ListsType[] | never[]>>;
   buttomTab: number;
@@ -15,11 +17,14 @@ export const BagNumber = createContext<{
 export const NumberBag = ({ children }: { children?: ReactNode }) => {
   const [bagNumber, setBagNumber] = useState(0);
   const [detail, setDetail] = useState<ListsType[] | never[]>([]);
+  const [favourite, setFavourite] = useState<ListsType[] | never[]>([]);
   const [bag, setBag] = useState<ListsType[] | never[]>([]);
-  const [buttomTab, setButtomTab] = useState(2);
+  const [buttomTab, setButtomTab] = useState(0);
 
   return (
-    <BagNumber.Provider value={{ bagNumber, setBagNumber, detail, setDetail, bag, setBag, buttomTab, setButtomTab }}>{children}</BagNumber.Provider>
+    <BagNumber.Provider value={{ bagNumber, setBagNumber, detail, setDetail, bag, setBag, buttomTab, setButtomTab, favourite, setFavourite }}>
+      {children}
+    </BagNumber.Provider>
   );
 };
 

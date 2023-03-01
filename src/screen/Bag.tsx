@@ -1,21 +1,41 @@
 import { useNavigation } from "@react-navigation/native";
-import { Text, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { SvgXml } from "react-native-svg";
-import { BackIcon } from "../../assets";
+import { Image, ScrollView, Text, View } from "react-native";
+import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
+import { BackIcon, closeIcon } from "../../assets";
 import { NavigatorRoutes } from "../enum";
+import { useNumber } from "../context/BagProducts";
+import { ListsType } from "../components/ProductsCard";
+import { SvgXml } from "react-native-svg";
 
 export const Bag = () => {
-  const { navigate } = useNavigation();
+  const { bag, bagNumber } = useNumber() as { bag: ListsType[]; bagNumber: number };
+  console.log(bag);
   return (
-    <View>
-      {/* <View className="flex flex-row relative h-[110px] items-end border-b-2 border-b-[#EAEAEA]">
-        <TouchableOpacity className="" onPress={() => console.log("h")}>
-          <SvgXml xml={backIcon} width={24} height={24} />
-        </TouchableOpacity>
-        <Text className="w-full text-center text-[18px] font-medium leading-[20px] py-[18] ">My Bag</Text>
-      </View> */}
-    </View>
+    <ScrollView>
+      <View className="pt-[20] px-[15] ">
+        <Text className="font-medium text-[16px]">Order items {`(${bagNumber})`}</Text>
+        <View>
+          {bag[0] === undefined ? null : (
+            <FlatList
+              data={bag}
+              renderItem={({ item }) => (
+                <View className="pt-[20] flex flex-row gap-[16]">
+                  <Image className="w-[96px] h-[96px] rounded" source={item.image} />
+                  <View>
+                    <Text className="text-[16px] font-medium">{item.name}</Text>
+                    <Text className="text-[13px] font-light">{item.price}</Text>
+                  </View>
+                  <TouchableOpacity className="right-0 top-[25]">
+                    <SvgXml xml={closeIcon} width={20} height={20} />
+                  </TouchableOpacity>
+                </View>
+              )}
+              keyExtractor={(item, index) => index.toString()}
+            />
+          )}
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 
