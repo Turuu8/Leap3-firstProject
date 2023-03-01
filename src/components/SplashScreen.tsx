@@ -11,8 +11,17 @@ export const SplashScreen = () => {
     <View className="bg-[#2D2A2B] h-full items-center justify-center gap-[10]">
       <SvgXml xml={splashScreenLogo} width="215px" />
       <View className="flex gap-[10]">
-        <TextInput className="h-[40] w-[200] border-[0.5px] border-[#fff] text-[#fff] p-[10]" placeholder="User name" placeholderTextColor="#fff" />
-        <TextInput className="h-[40] w-[200] border-[0.5px] border-[#fff] text-[#fff] p-[10]" placeholder="Password" placeholderTextColor="#fff" />
+        <TextInput
+          className="h-[40] w-[200] border-[0.5px] border-[#fff] text-[#fff] p-[10]"
+          placeholder="User name"
+          placeholderTextColor="#fff"
+        />
+        <TextInput
+          className="h-[40] w-[200] border-[0.5px] border-[#fff] text-[#fff] p-[10]"
+          placeholder="Password"
+          placeholderTextColor="#fff"
+          textContentType="password"
+        />
       </View>
       <TouchableOpacity
         onPress={() => {
