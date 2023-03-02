@@ -3,13 +3,13 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useNumber } from "../context/BagProducts";
+import { Dispatch, SetStateAction } from "react";
 import ProfileScreen from "../screen/Profile";
 import OrderScreen from "../screen/Order";
-import { NavigatorRoutes } from "../enum";
 import { SvgXml } from "react-native-svg";
+import { NavigatorRoutes } from "../enum";
 import HomeScreen from "../screen/Home";
 import ScanScreen from "../screen/Scan";
-import { Dispatch, SetStateAction } from "react";
 
 const Tab = createBottomTabNavigator();
 
