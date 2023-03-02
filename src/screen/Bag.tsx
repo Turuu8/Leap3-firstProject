@@ -11,31 +11,38 @@ export const Bag = () => {
   const { bag, bagNumber } = useNumber() as { bag: ListsType[]; bagNumber: number };
   console.log(bag);
   return (
-    <ScrollView>
-      <View className="pt-[20] px-[15] ">
-        <Text className="font-medium text-[16px]">Order items {`(${bagNumber})`}</Text>
-        <View>
-          {bag[0] === undefined ? null : (
-            <FlatList
-              data={bag}
-              renderItem={({ item }) => (
+    // <ScrollView>
+    <View className="pt-[20] px-[15] ">
+      <Text className="font-medium text-[16px]">Order items {`(${bagNumber})`}</Text>
+      <View>
+        {bag[0] === undefined ? null : (
+          <FlatList
+            data={bag}
+            renderItem={({ item }) => (
+              <>
                 <View className="pt-[20] flex flex-row gap-[16]">
                   <Image className="w-[96px] h-[96px] rounded" source={item.image} />
                   <View>
                     <Text className="text-[16px] font-medium">{item.name}</Text>
                     <Text className="text-[13px] font-light">{item.price}</Text>
                   </View>
-                  <TouchableOpacity className="right-0 top-[25]">
+                  <TouchableOpacity
+                    className=" pl-[100] w-[20]"
+                    onPress={() => {
+                      console.log("jjj");
+                    }}
+                  >
                     <SvgXml xml={closeIcon} width={20} height={20} />
                   </TouchableOpacity>
                 </View>
-              )}
-              keyExtractor={(item, index) => index.toString()}
-            />
-          )}
-        </View>
+              </>
+            )}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        )}
       </View>
-    </ScrollView>
+    </View>
+    // </ScrollView>
   );
 };
 
